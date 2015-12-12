@@ -1,8 +1,7 @@
 // This program is a score card for tracking points in Speed Uno
-import java.io.IOException;
 import java.util.Scanner;
 
-class newPlayer {
+public class Player {
     String playerName;
     int playerScore;
 }
@@ -17,9 +16,9 @@ class SpeedUno {
         System.out.println("There are " + numofplayers + " players.");
         
         // Gets player names from user.
-        int i;
-        for (i < numofplayers; i = 0; i++) {
-            System.out.println("Test");
+        for (int i = 0; i < numofplayers; i++) {
+            System.out.println("What is player " + i + "'s name?");
+            Player reader.next() = new Player();
         }
     }
 }
