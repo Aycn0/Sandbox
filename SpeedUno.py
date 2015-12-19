@@ -49,11 +49,11 @@ teamthree = []
 print numofplayers
 if numofplayers == 6:
     shuffle(listofplayers)
-    for i['team'] in listofplayers[0, 3, 1]:
+    for i in listofplayers[0:3:1]:
         i['team'] = 1
-    for i in range(len(listofplayers))[3, 6, 1]:
+    for i in listofplayers[3:6:1]:
         i['team'] = 2
-    for i in numofplayers:
+    for i in listofplayers:
         if i['team'] == 1:
             teamone.append(i['name'])
         if i['team'] == 2:
