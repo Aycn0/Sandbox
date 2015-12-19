@@ -1,3 +1,5 @@
+from random import shuffle
+
 # This program is a scorecard for Speed Uno
 
 # this gets a valid number of players
@@ -38,7 +40,40 @@ else:
 listofplayers = []
 for i in range(1, numofplayers + 1):
     playername = raw_input("What is player " + str(i) + "'s name?")
-    listofplayers.append({'name':playername, 'score':0})
+    listofplayers.append({'name':playername, 'score':0, 'team': 0})
+    
+# determines teams for players
+teamone = []
+teamtwo = []
+teamthree = []
+print numofplayers
+if numofplayers == 6:
+    shuffle(listofplayers)
+    for i['team'] in listofplayers[0, 3, 1]:
+        i['team'] = 1
+    for i in range(len(listofplayers))[3, 6, 1]:
+        i['team'] = 2
+    for i in numofplayers:
+        if i['team'] == 1:
+            teamone.append(i['name'])
+        if i['team'] == 2:
+            teamtwo.append(i['name'])
+    print("Team 1: " + ', '.join(teamone))
+    print("Team 2: " + ', '.join(teamtwo))
+    
+
+#if numofplayers == 8:
+ #   shuffle(listofplayers)
+  #  numofteams = numofplayer % 2
+#if numofplayers == 9:
+#    shuffle(listofplayers)
+#    numofteams = numofplayer % 3
+#if numofplayers == 10:
+#    shuffle(listofplayers)
+#    numofteams = numofplayer % 2
+#if numofplayers == 12:
+#    shuffle(listofplayers)
+#    numofteams = numofplayer % 3
 
 # this sets up the check to see if the game should end
 endgame = 0
