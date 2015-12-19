@@ -42,6 +42,8 @@ for i in range(1, numofplayers + 1):
     playername = raw_input("What is player " + str(i) + "'s name?")
     listofplayers.append({'name':playername, 'score':0, 'team': 0})
     
+
+
 # determines teams for players
 teamone = []
 teamtwo = []
@@ -62,18 +64,71 @@ if numofplayers == 6:
     print("Team 2: " + ', '.join(teamtwo))
     
 
-#if numofplayers == 8:
- #   shuffle(listofplayers)
-  #  numofteams = numofplayer % 2
-#if numofplayers == 9:
-#    shuffle(listofplayers)
-#    numofteams = numofplayer % 3
-#if numofplayers == 10:
-#    shuffle(listofplayers)
-#    numofteams = numofplayer % 2
-#if numofplayers == 12:
-#    shuffle(listofplayers)
-#    numofteams = numofplayer % 3
+elif numofplayers == 8:
+    shuffle(listofplayers)
+    for i in listofplayers[0:4:1]:
+        i['team'] = 1
+    for i in listofplayers[4:8:1]:
+        i['team'] = 2
+    for i in listofplayers:
+        if i['team'] == 1:
+            teamone.append(i['name'])
+        if i['team'] == 2:
+            teamtwo.append(i['name'])
+    print("Team 1: " + ', '.join(teamone))
+    print("Team 2: " + ', '.join(teamtwo))
+elif numofplayers == 9:
+    shuffle(listofplayers)
+    for i in listofplayers[0:3:1]:
+        i['team'] = 1
+    for i in listofplayers[3:6:1]:
+        i['team'] = 2
+    for i in listofplayers[6:9:1]:
+        i['team'] = 3
+    for i in listofplayers:
+        if i['team'] == 1:
+            teamone.append(i['name'])
+        if i['team'] == 2:
+            teamtwo.append(i['name'])
+        if i['team'] == 3:
+            teamthree.append(i['name'])
+    print("Team 1: " + ', '.join(teamone))
+    print("Team 2: " + ', '.join(teamtwo))
+    print("Team 3: " + ', '.join(teamthree))
+elif numofplayers == 10:
+    shuffle(listofplayers)
+    for i in listofplayers[0:5:1]:
+        i['team'] = 1
+    for i in listofplayers[5:10:1]:
+        i['team'] = 2
+    for i in listofplayers:
+        if i['team'] == 1:
+            teamone.append(i['name'])
+        if i['team'] == 2:
+            teamtwo.append(i['name'])
+    print("Team 1: " + ', '.join(teamone))
+    print("Team 2: " + ', '.join(teamtwo))
+elif numofplayers == 12:
+    shuffle(listofplayers)
+    for i in listofplayers[0:4:1]:
+        i['team'] = 1
+    for i in listofplayers[4:8:1]:
+        i['team'] = 2
+    for i in listofplayers[8:12:1]:
+        i['team'] = 3
+    for i in listofplayers:
+        if i['team'] == 1:
+            teamone.append(i['name'])
+        if i['team'] == 2:
+            teamtwo.append(i['name'])
+        if i['team'] == 3:
+            teamthree.append(i['name'])
+    print("Team 1: " + ', '.join(teamone))
+    print("Team 2: " + ', '.join(teamtwo))
+    print("Team 3: " + ', '.join(teamthree))
+else:
+    print("This is not a valid number of players")
+    
 
 # this sets up the check to see if the game should end
 endgame = 0
