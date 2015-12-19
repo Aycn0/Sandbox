@@ -130,13 +130,13 @@ elif numofplayers == 12:
     print("Team 2: " + ', '.join(teamtwo))
     print("Team 3: " + ', '.join(teamthree))
 
-
+seatorder = listofplayers
 # this sets up the check to see if the game should end
 endgame = 0
 while endgame == 0:
     
     # this updates the scores of the players
-    for i in listofplayers:
+    for i in seatorder:
         score = raw_input("What is " + i['name'] + "'s score? ")
         try:
             score = int(score)
@@ -152,12 +152,15 @@ while endgame == 0:
                     valid = 1
         i['score'] = i['score'] + score
         print i['name'] + "'s total score is: " + str(i['score'])
+        print " "
     
     # this gives the seating order of the players
     seatorder = sorted(listofplayers, key=lambda k: k['score'])
+    print " "
+    print " "
     print "The seating order is:"
     for i in seatorder:
-        print i['name']
+        print i['name'] + " with a score of " + str(i['score'])
         
 
     
@@ -166,12 +169,14 @@ while endgame == 0:
     for i in seatorder[numofplayers - 1:]:
         valid = 0
         while valid == 0:
+            print " "
             draw = raw_input("Does " + i['name'] + " want to draw for cards? Please type 'y' or 'n': ")
             if (draw == 'y' or draw == 'Y'):
                 valid = 1
                 scoremod = 0
                 valid2 = 0
                 while valid2 == 0:
+                    print " "
                     scoremod = raw_input("Was the draw correct? Please type 'y' or 'n': ")
                     if (scoremod == 'y' or scoremod == 'Y'):
                         valid2 = 1
@@ -184,6 +189,7 @@ while endgame == 0:
                         scoremod = 0
                         valid3 = 0
                         while valid3 == 0:
+                            print " "
                             scoremod = raw_input("Was the draw 1 card away? Please type 'y' or 'n': ")
                             if (scoremod == 'y' or scoremod == 'Y'):
                                 valid3 = 1
@@ -218,11 +224,13 @@ if (numofplayers == 6 or numofplayers == 8 or numofplayers == 10):
         if i['team'] == 2:
             scoreteamtwo = scoreteamtwo + 1
     if scoreteamone < scoreteamtwo:
+        print " "
         print "Team one wins!"
         for i in seatorder:
             if i['team'] == 1:
                 print i['name']
     else:
+        print " "
         print "Team two wins!"
         for i in seatorder:
             if i['team'] == 2:
@@ -251,11 +259,13 @@ if (numofplayers == 9 or numofplayers == 12):
             elif i['team'] == 2:
                 totalteamtwo = totalteamtwo + i['score']
         if totalteamone < totalteamtwo:
+            print " "
             print "Team one wins!"
             for i in seatorder:
                 if i['team'] == 1:
                     print i['name']
         else:
+            print " "
             print "Team two wins!"
             for i in seatorder:
                 if i['team'] == 2:
@@ -269,11 +279,13 @@ if (numofplayers == 9 or numofplayers == 12):
             elif i['team'] == 3:
                 totalteamthree = totalteamthree + i['score']
         if totalteamone < totalteamthree:
+            print " "
             print "Team one wins!"
             for i in seatorder:
                 if i['team'] == 1:
                     print i['name']
         else:
+            print " "
             print "Team three wins!"
             for i in seatorder:
                 if i['team'] == 3:
@@ -287,11 +299,13 @@ if (numofplayers == 9 or numofplayers == 12):
             elif i['team'] == 3:
                 totalteamthree = totalteamthree + i['score']
         if totalteamtwo < totalteamthree:
+            print " "
             print "Team two wins!"
             for i in seatorder:
                 if i['team'] == 2:
                     print i['name']
         else:
+            print " "
             print "Team three wins!"
             for i in seatorder:
                 if i['team'] == 3:
@@ -302,16 +316,19 @@ if (numofplayers == 9 or numofplayers == 12):
         teamscoredict = {1:scoreteamone, 2:scoreteamtwo, 3:scoreteamthree}
         winningteam = min(teamscoredict, key=teamscoredict.get)
         if winningteam == 1:
+            print " "
             print "Team one wins!"
             for i in seatorder:
                 if i['team'] == 1:
                     print i['name']
         elif winningteam == 2:
+            print " "
             print "Team two wins!"
             for i in seatorder:
                 if i['team'] == 2:
                     print i['name']
         elif winningteam == 3:
+            print " "
             print "Team three wins!"
             for i in seatorder:
                 if i['team'] == 3:
@@ -319,6 +336,8 @@ if (numofplayers == 9 or numofplayers == 12):
 
 # this prints the final scores
 for i in seatorder:
+    print " "
+    print "The final scores are: "
     print i['name'] + " from team " + str(i['team']) + " has a score of " + str(i['score'])
     
     
