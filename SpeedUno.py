@@ -4,26 +4,31 @@ import sys
 # This program is a scorecard for Speed Uno
 
 # this gets a valid number of players
-numofplayers = raw_input("How many players are there?")
-try:
-    numofplayers = int(numofplayers)
-except ValueError:
-    valid = 0
-    while valid == 0:
-        numofplayers = raw_input("Please enter a number for how many players there are.")
-        try:
-            numofplayers = int(numofplayers)
-        except ValueError:
-            valid = 0
-        else:
-            valid = 1
+loop4NOP=1		# Added by Albert for USER EXPERIENCE
+while(loop4NOP):	# Will continue looping until user inputs x for exit or valid number of players.
+    numofplayers = raw_input("How many players are there? ") 
+    if (str(numofplayers) == 'x' or str(numofplayers) =='X'):
+	sys.exit()
+    try:
+        numofplayers = int(numofplayers)
+    except ValueError:
+        valid = 0
+        while valid == 0:
+            numofplayers = raw_input("Please enter a number for how many players there are.")
+            try:
+                numofplayers = int(numofplayers)
+            except ValueError:
+                valid = 0
+            else:
+                valid = 1
 
-# this exits the program if an invalid number of players is selected
-if (numofplayers == 6 or numofplayers == 8 or numofplayers == 9 or numofplayers == 10 or numofplayers ==12):
-    print "There are " + str(numofplayers) + " players."
-else:
-    print("This is not a valid number of players")
-    sys.exit()
+    # this exits the program if an invalid number of players is selected 
+    if (numofplayers == 6 or numofplayers == 8 or numofplayers == 9 or numofplayers == 10 or numofplayers ==12):
+        print "There are " + str(numofplayers) + " players."
+	loop4NOP=0
+    else:
+	print("This is not a valid number of players. You need to have either 6, 8, 9, 10, or 12 people playing.")
+        print("Please try again. - or enter x to exit")
     
 # this determines ending score
 endscore = raw_input("What score would you like to play to?")
