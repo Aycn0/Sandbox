@@ -22,7 +22,7 @@ except ValueError:
 if (numofplayers == 6 or numofplayers == 8 or numofplayers == 9 or numofplayers == 10 or numofplayers ==12):
     print "There are " + str(numofplayers) + " players."
 else:
-    print("This is not a valid number of players")
+    print("This is not a valid number of players. You need to have either 6, 8, 9, 10, or 12 people playing.")
     sys.exit()
     
 # this determines ending score
