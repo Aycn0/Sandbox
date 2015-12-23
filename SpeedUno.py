@@ -8,7 +8,7 @@ loop4NOP=1		# Added by Albert for USER EXPERIENCE
 while(loop4NOP):	# Will continue looping until user inputs x for exit or valid number of players.
     numofplayers = raw_input("How many players are there? ") 
     if (str(numofplayers) == 'x' or str(numofplayers) =='X'):
-	sys.exit()
+        sys.exit()
     try:
         numofplayers = int(numofplayers)
     except ValueError:
@@ -25,9 +25,9 @@ while(loop4NOP):	# Will continue looping until user inputs x for exit or valid n
     # this exits the program if an invalid number of players is selected 
     if (numofplayers == 6 or numofplayers == 8 or numofplayers == 9 or numofplayers == 10 or numofplayers ==12):
         print "There are " + str(numofplayers) + " players."
-	loop4NOP=0
+        loop4NOP=0
     else:
-	print("This is not a valid number of players. You need to have either 6, 8, 9, 10, or 12 people playing.")
+        print("This is not a valid number of players. You need to have either 6, 8, 9, 10, or 12 people playing.")
         print("Please try again. - or enter x to exit")
     
 # this determines ending score
