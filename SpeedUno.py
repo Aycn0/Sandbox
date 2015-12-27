@@ -23,11 +23,11 @@ while(loop4NOP):	# Will continue looping until user inputs x for exit or valid n
                 valid = 1
 
     # this exits the program if an invalid number of players is selected 
-    if (numofplayers == 6 or numofplayers == 8 or numofplayers == 9 or numofplayers == 10 or numofplayers ==12):
+    if (numofplayers == 6 or numofplayers == 8 or numofplayers == 9 or numofplayers == 10 or numofplayers ==12 or numofplayers == 14 or numofplayers == 15):
         print "There are " + str(numofplayers) + " players."
         loop4NOP=0
     else:
-        print("This is not a valid number of players. You need to have either 6, 8, 9, 10, or 12 people playing.")
+        print("This is not a valid number of players. You need to have either 6, 8, 9, 10, 12, 14, or 15 people playing.")
         print("Please try again. - or enter x to exit")
     
 # this determines ending score
@@ -134,6 +134,37 @@ elif numofplayers == 12:
     print("Team 1: " + ', '.join(teamone))
     print("Team 2: " + ', '.join(teamtwo))
     print("Team 3: " + ', '.join(teamthree))
+elif numofplayers == 14:
+    shuffle(listofplayers)
+    for i in listofplayers[0:7:1]:
+        i['team'] = 1
+    for i in listofplayers[7:14:1]:
+        i['team'] = 2
+    for i in listofplayers:
+        if i['team'] == 1:
+            teamone.append(i['name'])
+        if i['team'] == 2:
+            teamtwo.append(i['name'])
+    print("Team 1: " + ', '.join(teamone))
+    print("Team 2: " + ', '.join(teamtwo))
+elif numofplayers == 15:
+    shuffle(listofplayers)
+    for i in listofplayers[0:5:1]:
+        i['team'] = 1
+    for i in listofplayers[5:10:1]:
+        i['team'] = 2
+    for i in listofplayers[10:15:1]:
+        i['team'] = 3
+    for i in listofplayers:
+        if i['team'] == 1:
+            teamone.append(i['name'])
+        if i['team'] == 2:
+            teamtwo.append(i['name'])
+        if i['team'] == 3:
+            teamthree.append(i['name'])
+    print("Team 1: " + ', '.join(teamone))
+    print("Team 2: " + ', '.join(teamtwo))
+    print("Team 3: " + ', '.join(teamthree))
 
 seatorder = listofplayers
 # this sets up the check to see if the game should end
@@ -167,7 +198,13 @@ while endgame == 0:
     for i in seatorder:
         print i['name'] + " with a score of " + str(i['score'])
         
-
+    # this checks if the game is supposed to end
+    for i in seatorder:
+        if i['score'] >= endscore:
+            endgame = 1
+            break
+    if endgame == 1:
+        break
     
     # this section checks if the last place person wants to guess the number of cards
     draw = 0
@@ -211,16 +248,12 @@ while endgame == 0:
             else:
                 valid = 0
                 
-    # this checks if the game is supposed to end
-    for i in seatorder:
-        if i['score'] >= endscore:
-            endgame = 1
-            break
+
             
 # this prints the winning team
 
 # this part prints for games of 6, 8, or 10 players (two teams)
-if (numofplayers == 6 or numofplayers == 8 or numofplayers == 10):
+if (numofplayers == 6 or numofplayers == 8 or numofplayers == 10 or numofplayers == 14):
     scoreteamone = 0
     scoreteamtwo = 0
     for i in seatorder[int(numofplayers) - 4:int(numofplayers) - 1: 1]:
@@ -242,7 +275,7 @@ if (numofplayers == 6 or numofplayers == 8 or numofplayers == 10):
                 print i['name']
     
 # this part prints for games of 9 or 12 players (three teams)
-if (numofplayers == 9 or numofplayers == 12):
+if (numofplayers == 9 or numofplayers == 12 or numofplayers == 15):
     scoreteamone = 0
     scoreteamtwo = 0
     scoreteamthree = 0
@@ -340,9 +373,9 @@ if (numofplayers == 9 or numofplayers == 12):
                     print i['name']
 
 # this prints the final scores
+print " "
+print "The final scores are: "
 for i in seatorder:
-    print " "
-    print "The final scores are: "
     print i['name'] + " from team " + str(i['team']) + " has a score of " + str(i['score'])
     
     
