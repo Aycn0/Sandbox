@@ -256,20 +256,20 @@ while endgame == 0:
 if (numofplayers == 6 or numofplayers == 8 or numofplayers == 10 or numofplayers == 14):
     scoreteamone = 0
     scoreteamtwo = 0
-    for i in seatorder[int(numofplayers) - 4:int(numofplayers) - 1: 1]:
+    for i in seatorder[int(numofplayers) - 3:int(numofplayers): 1]:
         if i['team'] == 1:
             scoreteamone = scoreteamone + 1
         if i['team'] == 2:
             scoreteamtwo = scoreteamtwo + 1
     if scoreteamone < scoreteamtwo:
         print " "
-        print "Team one wins!"
+        print "Team one wins with a total of " + str(scoreteamone) + " in the bottom three."
         for i in seatorder:
             if i['team'] == 1:
                 print i['name']
     else:
         print " "
-        print "Team two wins!"
+        print "Team two wins with a total of " + str(scoreteamtwo) + "in the bottom three."
         for i in seatorder:
             if i['team'] == 2:
                 print i['name']
