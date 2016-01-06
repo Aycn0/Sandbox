@@ -49,14 +49,14 @@ except ValueError:
 #this creates a list of players and records names
 listofplayers = []
 for i in range(1, numofplayers + 1):
-    playername = raw_input("What is player " + str(i) + "'s name?")
+    playername = raw_input("What is player " + str(i) + "'s name? ")  # Albert - Added a space at the end for UE
     listofplayers.append({'name':playername, 'score':0, 'team': 0})
 
 # determines teams for players
 teamone = []
 teamtwo = []
 teamthree = []
-print numofplayers
+#print numofplayers #Albert - This is redundant for UE
 if numofplayers == 6:
     shuffle(listofplayers)
     for i in listofplayers[0:3:1]:
@@ -68,6 +68,8 @@ if numofplayers == 6:
             teamone.append(i['name'])
         if i['team'] == 2:
             teamtwo.append(i['name'])
+    print("\n\nHere are the teams")
+    print("-------------------------")    #Albert added for UI
     print("Team 1: " + ', '.join(teamone))
     print("Team 2: " + ', '.join(teamtwo))
     
@@ -83,6 +85,8 @@ elif numofplayers == 8:
             teamone.append(i['name'])
         if i['team'] == 2:
             teamtwo.append(i['name'])
+    print("\n\nHere are the teams")
+    print("-------------------------")    #Albert added for UI
     print("Team 1: " + ', '.join(teamone))
     print("Team 2: " + ', '.join(teamtwo))
 elif numofplayers == 9:
@@ -100,6 +104,8 @@ elif numofplayers == 9:
             teamtwo.append(i['name'])
         if i['team'] == 3:
             teamthree.append(i['name'])
+    print("\n\nHere are the teams")
+    print("-------------------------")    #Albert added for UI
     print("Team 1: " + ', '.join(teamone))
     print("Team 2: " + ', '.join(teamtwo))
     print("Team 3: " + ', '.join(teamthree))
@@ -114,6 +120,8 @@ elif numofplayers == 10:
             teamone.append(i['name'])
         if i['team'] == 2:
             teamtwo.append(i['name'])
+    print("\n\nHere are the teams")
+    print("-------------------------")    #Albert added for UI
     print("Team 1: " + ', '.join(teamone))
     print("Team 2: " + ', '.join(teamtwo))
 elif numofplayers == 12:
@@ -131,6 +139,8 @@ elif numofplayers == 12:
             teamtwo.append(i['name'])
         if i['team'] == 3:
             teamthree.append(i['name'])
+    print("\n\nHere are the teams")
+    print("-------------------------")    #Albert added for UI
     print("Team 1: " + ', '.join(teamone))
     print("Team 2: " + ', '.join(teamtwo))
     print("Team 3: " + ', '.join(teamthree))
@@ -194,17 +204,28 @@ while endgame == 0:
     seatorder = sorted(listofplayers, key=lambda k: k['score'])
     print " "
     print " "
-    print "The seating order is:"
+    print "The new seating order"
+    print "-------------------------------------------------"
+    print "| Name \t\t |     Team\t|     Score\t|"
+    print "-------------------------------------------------"
     for i in seatorder:
-        print i['name'] + " with a score of " + str(i['score'])
+    	if i['name'] in teamone:
+	    teamNum = 1
+	if i['name'] in teamtwo:
+	    teamNum = 2
+	if teamthree:
+	    if i['name'] in teamthree:
+	        teamNum = 3
         
-    # this checks if the game is supposed to end
-    for i in seatorder:
-        if i['score'] >= endscore:
-            endgame = 1
-            break
-    if endgame == 1:
-        break
+	#Albert - Need to handle tabs with names of different lengths
+	tmpTabs = '\t'
+	if len(i['name']) >5:
+	    tmpTabs = tmpTabs
+	else:
+	    tmpTabs = tmpTabs+"\t"
+        print "| "+i['name'] +  tmpTabs+" | \t"+ str(teamNum) +"\t| \t" + str(i['score']) + "\t|" 
+        print "-------------------------------------------------"
+
     
     # this section checks if the last place person wants to guess the number of cards
     draw = 0
@@ -248,7 +269,11 @@ while endgame == 0:
             else:
                 valid = 0
                 
-
+    # this checks if the game is supposed to end
+    for i in seatorder:
+        if i['score'] >= endscore:
+            endgame = 1
+            break
             
 # this prints the winning team
 
